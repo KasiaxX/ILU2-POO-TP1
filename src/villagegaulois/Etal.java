@@ -25,7 +25,12 @@ public class Etal {
 		etalOccupe = true;
 	}
 
+	//Étape 1 : lever une exception si l’étal n’a jamais été occupé
 	public String libererEtal() {
+		if (!etalOccupe) {
+			throw new IllegalStateException("Impossible de libérer un étal non occupé !");
+		}
+		
 		etalOccupe = false;
 		StringBuilder chaine = new StringBuilder(
 				"Le vendeur " + vendeur.getNom() + " quitte son étal, ");
@@ -47,8 +52,21 @@ public class Etal {
 		return "L'étal est libre";
 	}
 
+	//Étape 2 : gérer les exceptions dans acheterProduit()
 	public String acheterProduit(int quantiteAcheter, Gaulois acheteur) {
-		if (etalOccupe) {
+		
+		try {
+			if (acheteur == null) {
+				throw new NullPointerException("L’acheteur ne peut pas être null !");
+			}
+			if (quantite < 1) {
+				throw new IllegalArgumentException("La quantité doit être positive !");
+			}
+			if (!etalOccupe) {
+				throw new IllegalStateException("Impossible d’acheter : l’étal est vide !");
+			}
+			
+		
 			StringBuilder chaine = new StringBuilder();
 			chaine.append(acheteur.getNom() + " veut acheter " + quantiteAcheter
 					+ " " + produit + " à " + vendeur.getNom());
@@ -70,8 +88,11 @@ public class Etal {
 						+ vendeur.getNom() + "\n");
 			}
 			return chaine.toString();
+		}catch (NullPointerException e) {
+			e.printStackTrace(System.err);
+			return "";
 		}
-		return null;
+		
 	}
 
 	public boolean contientProduit(String produit) {
