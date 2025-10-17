@@ -72,8 +72,8 @@ public class Village {
 		private Marche(int NbEtals) {
 			etals = new Etal[NbEtals];
 			for (int i = 0; i < NbEtals; i++) {
-				
-				
+				etals[i] = new Etal();
+				 
 			}
 		}
 
@@ -159,7 +159,8 @@ public class Village {
 	// b) rechercherVendeursProduit
 	public String rechercherVendeursProduit(String produit) {
 			
-		StringBuilder chaine = new StringBuilder();			Etal[] etalsTrouves = marche.trouverEtals(produit);
+		StringBuilder chaine = new StringBuilder();			
+		Etal[] etalsTrouves = marche.trouverEtals(produit);
 
 		//il y a pas un vendeur avec le produit
 		if (etalsTrouves.length == 0) {

@@ -14,16 +14,16 @@ public class ScenarioCasDegrade {
 			Etal etal = new Etal();
 			etal.libererEtal();
 			System.out.println("Fin du test");
-		} catch (IllegalStateException e) {
-			System.err.println("Erreur détectée : " + e.getMessage());
+		} catch (IllegalStateException i) {
+			System.err.println("Erreur détectée : " + i.getMessage());
 		}
 
 		System.out.println("\n=== Test 2 : acheter avec acheteur null ===");
 		try {
 			Etal etal = new Etal();
 			etal.acheterProduit(5, null);
-		} catch (Exception e) {
-			System.err.println("Erreur : " + e);
+		} catch (Exception i) {
+			System.err.println("Erreur : " + i);
 		}
 
 		System.out.println("\n=== Test 3 : quantité négative ===");
@@ -32,8 +32,8 @@ public class ScenarioCasDegrade {
 			Etal etal = new Etal();
 			etal.occuperEtal(g, "potion", 10);
 			etal.acheterProduit(-2, g);
-		} catch (IllegalArgumentException e) {
-			System.err.println("Erreur détectée : " + e.getMessage());
+		} catch (IllegalArgumentException i) {
+			System.err.println("Erreur détectée : " + i.getMessage());
 		}
 
 		System.out.println("\n=== Test 4 : étal vide ===");
@@ -41,8 +41,8 @@ public class ScenarioCasDegrade {
 			Gaulois g = new Gaulois("Obélix", 25);
 			Etal etal = new Etal(); // jamais occupé
 			etal.acheterProduit(5, g);
-		} catch (IllegalStateException e) {
-			System.err.println("Erreur détectée : " + e.getMessage());
+		} catch (IllegalStateException i) {
+			System.err.println("Erreur détectée : " + i.getMessage());
 		}
 	}
 
